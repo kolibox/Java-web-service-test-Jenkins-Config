@@ -1,0 +1,5 @@
+cd ./complete
+./mvnw package
+sudo docker build -t kolibomber/java-spring:$BUILD_NUMBER .
+sudo docker push kolibomber/java-spring:$BUILD_NUMBER
+sudo kubectl set image deployment/onefactor java-spring=kolibomber/java-spring:$BUILD_NUMBER --record=true
